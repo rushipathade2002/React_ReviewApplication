@@ -8,7 +8,6 @@ const ReviewList = ()=> {
         return (
             <div>
                 <Analytics/>
-               
             </div>
         );
 }

@@ -3,12 +3,15 @@ import { FaUserPlus } from "react-icons/fa6";
 import ReviewData from '../store/Reviews_data';
 import { IoBookmarkOutline, IoStar, IoStarOutline } from 'react-icons/io5';
 import { BiDotsHorizontal } from 'react-icons/bi';
+import { NavLink } from 'react-router-dom';
 
 
 
  const Analytics = () => {
 
     const [data, setData]= useState([]);
+
+    
 
     useEffect(()=>{
         setData(ReviewData);
@@ -46,8 +49,7 @@ import { BiDotsHorizontal } from 'react-icons/bi';
                                     data?.map((elemt, index)=>{
                                         return(
                                             <>
-                                            
-                                            <div className="row pt-5 " onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
+                                            <div className="row pt-5 mb-5" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
                                                 <div className="col-md-1">
                                                     <img src={elemt.source.image} className="w-100 rounded-circle shadow-4-strong" alt="" />
                                                 </div>
@@ -61,15 +63,18 @@ import { BiDotsHorizontal } from 'react-icons/bi';
                                                     {renderStars(elemt.rating_review_score)} <span className="text-muted">{elemt.date}</span>
                                                 </div>
                                                 <div className="col-md-2 mt-1 mb-1" ></div>
+
+                                                <a href={elemt.review_url} target='https://react-icons.github.io/react-icons/search/#q=star'>
                                                 <div className="col-md-12" style={{"backgroundColor":"#eaf09b6b"}}>
                                                     {elemt.raw_content}
                                                     {hoveredReview === index &&
-                                                        <div className="col-md-12" style={{ "backgroundColor": "#eaf09b6b" }}>
-                                                            {/* Additional content to show on hover */}
+                                                        <div className="col-md-12" style={{ "backgroundColor": "#e8bd6d3d" }}>
+
                                                             <p>{elemt.content}</p>
                                                         </div>
                                                     }
                                                 </div>
+                                                </a>
                                             </div>
                                             </>
                                         )
